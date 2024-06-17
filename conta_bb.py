@@ -67,7 +67,7 @@ class Conta:
             elif opcao_escolha == 3:
                 self.sacar_dinheiro()
             elif opcao_escolha == 4:
-                self.cheque_especial()
+                self.usar_cheque_especial()
             else:
                 self.opcao_invalida()
         except ValueError:
