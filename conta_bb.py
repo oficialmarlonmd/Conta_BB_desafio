@@ -33,14 +33,15 @@ class Conta:
 
     def usar_cheque_especial(self):
         while True:
-            if self.saldo == 0.0:
+            if self.saldo <= 0.0:
                 cheque = input('Você não tem saldo, deseja usar o cheque especial "sim/não": ')
                 if cheque == 'sim':
                     saque = float(input(f'Seu cheque especial é de R$ {self.cheque_especial}, quanto deseja sacar: '))
                     if self.cheque_especial >= saque:
                         juros = saque * (14/100)
                         self.cheque_especial -= (saque + juros)
-                        print(f'Você acabou de sacar o valor de R$ {saque} e resta o valor de R$ {self.cheque_especial} no cheque especial!')
+                        self.saldo = self.saldo - juros - saque
+                        print(f'Você acabou de sacar o valor de R$ {saque}de cheque especial e resta o valor de R$ {self.saldo} no saldo!')
                     else:
                         print('Valor do saque excede o limite do cheque especial.')
                 else:
@@ -85,6 +86,7 @@ class Conta:
 
 cliente_1 = Conta()
 cliente_1.print_opcao()
+cliente_1.escolher_opcao()
 cliente_1.escolher_opcao()
 
 
